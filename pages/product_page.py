@@ -11,10 +11,12 @@ class ProductPage(BasePage):
 
     def should_be_product_name(self):
         message_product_name = self.browser.find_element(*AddToCartLocators.MESSAGE_PRODUCT_NAME)
-        text_product_name = message_product_name.text
-        text = f'{text_product_name} in the basket'
+        product_name = self.browser.find_element(*AddToCartLocators.PRODUCT_NAME)
+        text_message_product_name = message_product_name.text
+        text_product_name = product_name.text
+        text = f'{text_message_product_name} in the basket'
         print(text)
-        assert text_product_name in text, f"substring '{text_product_name}' is not part of string '{text}'"
+        assert text_message_product_name == text_product_name, f"substring '{text_product_name}' is not part of string '{text}'"
 
     def should_be_cart_cost(self):
         car_cost = self.browser.find_element(*AddToCartLocators.CART_COST)
