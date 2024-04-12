@@ -8,3 +8,10 @@ class MainPageLocators():
 class LoginPageLocators():
     LOGIN_FORM = (By.CSS_SELECTOR, "#login_form > h2")
     REGISTER_FORM = (By.CSS_SELECTOR, "#register_form > h2")
+
+
+class AddToCartLocators():
+    ADD_TO_CART = (By.CSS_SELECTOR, "#add_to_basket_form > button")
+    MESSAGE_PRODUCT_NAME = (By.CSS_SELECTOR, "#messages > div:nth-child(1) > div > strong")
+    CART_COST = (By.CSS_SELECTOR, "#messages > div.alert.alert-safe.alert-noicon.alert-info.fade.in > div > p:nth-child(1) > strong")
+    COST_PRODUCT = (By.CSS_SELECTOR, "#content_inner > article > div.row > div.col-sm-6.product_main > p.price_color")
