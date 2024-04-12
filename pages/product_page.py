@@ -1,8 +1,3 @@
-from telnetlib import EC
-
-from selenium.common import TimeoutException
-from selenium.webdriver.support.wait import WebDriverWait
-
 from .base_page import BasePage
 from .locators import AddToCartLocators
 
