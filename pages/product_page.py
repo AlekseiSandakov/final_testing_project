@@ -1,3 +1,8 @@
+from telnetlib import EC
+
+from selenium.common import TimeoutException
+from selenium.webdriver.support.wait import WebDriverWait
+
 from .base_page import BasePage
 from .locators import AddToCartLocators
 
@@ -16,7 +21,8 @@ class ProductPage(BasePage):
         text_product_name = product_name.text
         text = f'{text_message_product_name} in the basket'
         print(text)
-        assert text_message_product_name == text_product_name, f"substring '{text_product_name}' is not part of string '{text}'"
+        assert text_message_product_name == text_product_name, f"substring '{text_product_name}', \
+            is not part of string '{text}'"
 
     def should_be_cart_cost(self):
         car_cost = self.browser.find_element(*AddToCartLocators.CART_COST)
@@ -25,3 +31,11 @@ class ProductPage(BasePage):
         price = cost_product.text
         print(f'cart cost {cost}, the price of the product {price}')
         assert cost == price, "The cost of the cart is not equal to the price of the product"
+
+    def should_not_be_success_message(self):
+        assert self.is_not_element_present(*AddToCartLocators.MESSAGE_PRODUCT_NAME), \
+            "Success message is presented, but should not be"
+
+    def should_is_disappeared_success_message(self):
+        assert self.is_disappeared(*AddToCartLocators.MESSAGE_PRODUCT_NAME), \
+            "The success message did not disappear, but should"
